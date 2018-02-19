@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patron group:</strong>
+  <%= @patron_group.patron_group_id %>
+</p>
+
+<p>
+  <strong>Patron group code:</strong>
+  <%= @patron_group.patron_group_code %>
+</p>
+
+<p>
+  <strong>Patron group name:</strong>
+  <%= @patron_group.patron_group_name %>
+</p>
+
+<p>
+  <strong>Patron group display:</strong>
+  <%= @patron_group.patron_group_display %>
+</p>
+
+<%= link_to 'Edit', edit_patron_group_path(@patron_group) %> |
+<%= link_to 'Back', patron_groups_path %>

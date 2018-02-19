@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Patron Groups</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Patron group</th>
+      <th>Patron group code</th>
+      <th>Patron group name</th>
+      <th>Patron group display</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @patron_groups.each do |patron_group| %>
+      <tr>
+        <td><%= patron_group.patron_group_id %></td>
+        <td><%= patron_group.patron_group_code %></td>
+        <td><%= patron_group.patron_group_name %></td>
+        <td><%= patron_group.patron_group_display %></td>
+        <td><%= link_to 'Show', patron_group %></td>
+        <td><%= link_to 'Edit', edit_patron_group_path(patron_group) %></td>
+        <td><%= link_to 'Destroy', patron_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Patron Group', new_patron_group_path,class: 'btn btn-success' %>

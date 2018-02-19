@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+<p>
+  <strong>Circ policy matrix:</strong>
+  <%= @circ_policy_matrix.circ_policy_matrix_id %>
+</p>
+
+<p>
+  <strong>Circ patron group name:</strong>
+     <%= PatronGroup.find_by(patron_group_id: @circ_policy_matrix.patron_group_id).patron_group_name %>,
+</p>
+<p>
+  <strong>Circ item type name:</strong>
+     <%= ItemType.find_by(item_type_id: @circ_policy_matrix.item_type_id).item_type_name %> </td>
+</p>
+<p>
+  <strong>Circ policy group name:</strong>
+   <%= CircPolicyGroup.find_by(circ_group_id: @circ_policy_matrix.circ_group_id).circ_group_name %>,
+</p>
+<p>
+  <strong>Charge/Renew:</strong>
+  <%= @circ_policy_matrix.charge_renew %>
+</p>
+<p>
+  <strong>Place Recall:</strong>
+  <%= @circ_policy_matrix.place_recall %>
+</p>
+<p>
+  <strong>Place Hold:</strong>
+  <%= @circ_policy_matrix.place_hold %>
+</p>
+<p>
+  <strong>Place Library to Library:</strong>
+  <%= @circ_policy_matrix.place_call_slip %>
+</p>
+<p>
+  <strong>Loan Interval:</strong>
+  <%= @circ_policy_matrix.loan_period %>
+  <%= @circ_policy_matrix.loan_interval %>
+</p>
+</div>
+
+
+<%= link_to 'Edit', edit_circ_policy_matrix_path(@circ_policy_matrix) %> |
+<%= link_to 'Back', circ_policy_matrices_path %>

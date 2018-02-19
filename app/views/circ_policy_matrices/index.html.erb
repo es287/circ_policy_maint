@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Circ Policy Matrices</h1>
+<div class="container">
+<%= paginate @circ_policy_matrices %>
+<%= form_for_filterrific @filterrific , html: { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
+<span class="form-group">
+    Circ Policy Group
+    <%= f.select(
+      :with_cpg_id,
+      @filterrific.select_options[:with_cpg_id], { include_blank: '- Any -' }
+    ) %>
+  </span>
+<span class="form-group">
+    Patron Group
+    <%= f.select(
+      :with_pg_id,
+      @filterrific.select_options[:with_pg_id], { include_blank: '- Any -' }
+    ) %>
+  </span>
+<span class="form-group">
+    Item Type 
+    <%= f.select(
+      :with_it_id,
+      @filterrific.select_options[:with_it_id], { include_blank: '- Any -' }
+    ) %>
+<br/>
+<%= f.submit 'Filter' %>
+<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Circ policy matrix id,circgroup,patrongroup,itemtype</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @circ_policy_matrices.each do |cpm| %>
+      <tr>
+        <td><%= cpm.circ_policy_matrix_id %>,
+        <%= CircPolicyGroup.find_by(circ_group_id: cpm.circ_group_id).circ_group_name %>, 
+        <%= PatronGroup.find_by(patron_group_id: cpm.patron_group_id).patron_group_name %>, 
+        <%= ItemType.find_by(item_type_id: cpm.item_type_id).item_type_name %> </td>
+        <td><%= link_to 'Show', cpm %></td>
+        <td><%= link_to 'Edit', edit_circ_policy_matrix_path(cpm) %></td>
+        <td><%= link_to 'Destroy', cpm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'New Circ Policy Group', new_circ_policy_matrix_path,class: 'btn btn-success' %>

@@ -1,0 +1,37 @@
+<%= form_for(patron_group) do |f| %>
+  <% if patron_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(patron_group.errors.count, "error") %> prohibited this patron_group from being saved:</h2>
+
+      <ul>
+      <% patron_group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :patron_group_id %>
+    <%= f.number_field :patron_group_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :patron_group_code %>
+    <%= f.text_field :patron_group_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :patron_group_name %>
+    <%= f.text_field :patron_group_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :patron_group_display %>
+    <%= f.text_field :patron_group_display %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

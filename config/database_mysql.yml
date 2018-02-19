@@ -1,0 +1,9 @@
+<%= ENV['RAILS_ENV'] %>:
+  adapter: mysql2
+  host: localhost
+  database: circapp 
+  username: circapp_1 
+  password: circapp_1A 
+  socket: /var/lib/mysql/mysql.sock 
+  pool: 200
+<% end %> 

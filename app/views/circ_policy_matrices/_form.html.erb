@@ -1,0 +1,70 @@
+<div class="container">
+<%= form_for(circ_policy_matrix,html: {class:"form-horizontal"}) do |f| %>
+  <% if circ_policy_matrix.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(circ_policy_matrix.errors.count, "error") %> prohibited this circ_policy_matrix from being saved:</h2>
+
+      <ul>
+      <% circ_policy_matrix.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group" , style="width: 200px">
+    <%= f.label :circ_policy_matrix_id %>
+    <%= f.number_field :circ_policy_matrix_id %>
+  </div>
+  <div class="form-group" , style="width: 200px">
+    <%= f.label :patron_group_id %>
+    <%= f.collection_select(:patron_group_id, PatronGroup.all, :patron_group_id, :patron_group_name,{},{class: "form-control"}) %>
+  </div>
+  <div class="form-group" , style="width: 200px">
+    <%= f.label :circ_group_id %>
+    <%= f.collection_select(:circ_group_id, CircPolicyGroup.all, :circ_group_id, :circ_group_name,{},{class: "form-control"}) %>
+  </div>
+  <div class="form-group" , style="width: 200px">
+    <%= f.label :item_type_id %>
+    <%= f.collection_select(:item_type_id, ItemType.all, :item_type_id, :item_type_name,{},{class: "form-control"}) %>
+  </div>
+  <div class="form-group" , style="width: 200px">
+    <%= f.label :charge_renewl %>
+    <div class="help-text" >When checked, this specific Patron Group-Item Type combination may borrow, that is charge and
+renew.  If Charge/Renew is not selected, no other values need to be entered</div>.
+    <%= f.select(:charge_renew, [['Yes', 'Y'], ['No', 'N']],{},{class: "form-control"}) %>
+  </div>
+  <div class="form-group" , style="width: 200px">
+    <%= f.label :place_recall %>
+    <%= f.select(:place_recall, [['Yes', 'Y'], ['No', 'N']],{},{class: "form-control"}) %>
+  </div>
+  <div class="form-group" , style="width: 200px">
+    <%= f.label :place_hold %>
+    <%= f.select(:place_hold, [['Yes', 'Y'], ['No', 'N']],{},{class: "form-control"}) %>
+  </div>
+  <div class="form-group" , style="width: 200px">
+    <%= f.label :place_call_slip %>
+    <%= f.select(:place_call_slip, [['Yes', 'Y'], ['No', 'N']],{},{class: "form-control"}) %>
+  </div>
+  <div class="form-group" , style="width: 200px">
+    <%= f.label :place_hold %>
+    <%= f.select(:place_hold, [['Yes', 'Y'], ['No', 'N']],{},{class: "form-control"}) %>
+  </div>
+  <div class="form-group" , style="width: 200px">
+    <%= f.label :loan_interval %>
+    <%= f.select(:loan_interval, [['Days', 'D'], ['Hours', 'H'],["Minutes","M"]],{},{class: "form-control"}) %>
+  </div>
+  <div class="form-group" , style="width: 200px">
+    <%= f.label :loan_period %>
+    <%= f.number_field :loan_period%>
+  </div>
+    t.string  "charge_renew"
+    t.string  "loan_interval"
+    t.integer "loan_period"
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
+

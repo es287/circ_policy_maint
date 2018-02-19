@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Circ group:</strong>
+  <%= @circ_policy_group.circ_group_id %>
+</p>
+
+<p>
+  <strong>Circ group name:</strong>
+  <%= @circ_policy_group.circ_group_name %>
+</p>
+
+<%= link_to 'Edit', edit_circ_policy_group_path(@circ_policy_group) %> |
+<%= link_to 'Back', circ_policy_groups_path %>
